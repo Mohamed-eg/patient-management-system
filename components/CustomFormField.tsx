@@ -3,7 +3,6 @@
 import React from 'react'
 import {
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
@@ -12,6 +11,9 @@ import {
   import { Input } from "@/components/ui/input"
 import { Control } from 'react-hook-form'
 import { FormFieldType } from './forms/PatientForm'
+import 'react-phone-number-input/style.css'
+import PhoneInput, { type Value } from 'react-phone-number-input'
+import Image from 'next/image'
 
   interface CustomProps {
     control :Control<any>,
@@ -29,12 +31,46 @@ import { FormFieldType } from './forms/PatientForm'
 
   }
   const ReanderField = ({field, props}:{field:any; props:CustomProps})=>{
-    return(
-        <Input
-        type='text'
-        placeholder='mohamemd'
-        />
+    const {fieldType,iconSrc,iconAlt,placeholder} = props;
+ switch (fieldType) {
+    case FormFieldType.INPUT:
+      return(
+      <div className='flex rounded-md border border-dark-500 bg-dark-400 '>
+        {iconSrc && (
+            <Image
+            src={iconSrc}
+            height={24}
+            width={24}
+            alt={iconAlt||'icon'}
+            className='ml-2'
+            />
+        )}
+        <FormControl>
+            <Input
+            placeholder={placeholder}
+            {...field}
+            className='shad-input border-0 '
+            />
+        </FormControl>
+    </div>
     )
+    case FormFieldType.PHONE_INPUT:
+        return(
+            <FormControl>
+                <PhoneInput
+                 placeholder={placeholder}
+                 defaultCountry='EG'
+                 international
+                 withCountryCallingCode
+                 value={field.value as Value | undefined}
+                 onChange={field.onChange}
+                 className='input-phone shad-input border-0'
+                />
+            </FormControl>
+        )
+    default:
+        break;
+ }
   }
 const CustomFormField = (props:CustomProps) => {
     const {control, fieldType, name, label } =props;
