@@ -14,8 +14,9 @@ import { FormFieldType } from "./PatientForm"
 import { Doctors, GenderOptions, IdentificationTypes } from "@/constants"
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group"
 import { Label } from "../ui/label"
-import { Select, SelectItem } from "../ui/select"
+import { SelectItem } from "../ui/select"
 import Image from "next/image"
+import FileUploader from "../FileUploader"
 
 const RegisterForm=({user}:{user:User})=> {
     console.log(user)
@@ -91,7 +92,7 @@ const RegisterForm=({user}:{user:User})=> {
           name='birtDate'
           label = 'Date of birth'
           />
-          <CustomFormField
+        <CustomFormField
           fieldType={FormFieldType.SKELETON}
           control={form.control}
           name='gender'
@@ -112,8 +113,7 @@ const RegisterForm=({user}:{user:User})=> {
                 ))}
               </RadioGroup>
             </FormControl>
-  )}
-          />
+  )}/>
         </div>
         <div className="flex flex-col gap-6 xl:flex-row">
         <CustomFormField
@@ -223,7 +223,7 @@ const RegisterForm=({user}:{user:User})=> {
           placeholder = 'diapets'
           />
         </div>
-        <div className="flex flex-col gap-6 xl:flex-row">
+  
         <section className="space-y-6">
             <div className="mb-9 space-y-1">
             <h2 className="sub-header">Identification and verification</h2>
@@ -242,9 +242,49 @@ const RegisterForm=({user}:{user:User})=> {
                 {type}
               </SelectItem>
             ))}
-          </CustomFormField>
+        </CustomFormField>
+        <CustomFormField
+          fieldType={FormFieldType.INPUT}
+          control={form.control}
+          name='identificationNumber'
+          label = 'identification Number'
+          placeholder = 'Write your identification card number'
+          />
         </div>
-        </div>
+        <CustomFormField
+          fieldType={FormFieldType.SKELETON}
+          control={form.control}
+          name='identificationDocument'
+          label = 'Img or PDF for your Identification Document'
+          renderSkeleton={(field)=>(
+            <FormControl>
+              <FileUploader files={field.value} onChange={field.onChange}/>
+            </FormControl>
+  )}/>
+  <section className="space-y-6">
+            <div className="mb-9 space-y-1">
+            <h2 className="sub-header">Consent and Privacy</h2>
+            </div>
+        </section>
+        <CustomFormField
+          fieldType={FormFieldType.CHECKBOX}
+          control={form.control}
+          name="treatmentConsent"
+          label="I Consent to Treatment"
+        />
+        <CustomFormField
+          fieldType={FormFieldType.CHECKBOX}
+          control={form.control}
+          name="disclosureConsent"
+          label="I Consent to disclosure information"
+        />
+        <CustomFormField
+          fieldType={FormFieldType.CHECKBOX}
+          control={form.control}
+          name="privacyConsent"
+          label="I Consent to privacy policy"
+        />
+        
       <SubmitButton isLoading={isLoading}>Get started</SubmitButton>
     </form>
   </Form>
