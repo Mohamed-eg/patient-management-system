@@ -14,11 +14,7 @@ export const metadata: Metadata = {
   description: "A Patient mangment system",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({children}: Readonly<{children: React.ReactNode;}>) {
   return (
     <html lang="en">
       <body
@@ -26,9 +22,7 @@ export default function RootLayout({
       >
        <ThemeProvider
             attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
+            defaultTheme="dark"
           >
             {children}
           </ThemeProvider>
