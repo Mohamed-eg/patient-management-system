@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* globals.css */
+body {
+  @apply bg-white text-black;
+}
+
+body.dark {
+  @apply bg-gray-900 text-white;
+}
+
 /* ========================================== TAILWIND STYLES */
 @layer base {
   /* Remove scrollbar */

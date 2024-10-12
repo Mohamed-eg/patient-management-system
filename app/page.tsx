@@ -24,6 +24,9 @@ export default function Home() {
         Admin
         </Link>
         </div>
+        <div className="bg-white dark:bg-black text-gray-900 dark:text-gray-100">
+          This is a dark mode aware component.
+        </div>
       </div>
     </section>
     <Image
