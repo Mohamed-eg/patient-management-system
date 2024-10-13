@@ -18,11 +18,11 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
   return (
     <html lang="en">
       <body
-        className={cn('min-h-screen font-sans bg-dark-300 antialiased',fontSans.variable)}
+        className={cn('min-h-screen font-sans antialiased',fontSans.variable)}
       >
        <ThemeProvider
             attribute="class"
-            defaultTheme="dark"
+            defaultTheme="system"
           >
             {children}
           </ThemeProvider>

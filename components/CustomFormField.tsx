@@ -39,7 +39,7 @@ import { Checkbox } from './ui/checkbox'
  switch (fieldType) {
     case FormFieldType.INPUT:
       return(
-      <div className='flex rounded-md border border-dark-500 bg-dark-400 '>
+      <div className='flex rounded-md border border-dark-500   '>
         {iconSrc && (
             <Image
             src={iconSrc}
@@ -74,7 +74,7 @@ import { Checkbox } from './ui/checkbox'
         )
     case FormFieldType.DATE_PICKER:
       return(
-          <div className='flex rounded-md border border-dark-500 bg-dark-400'>
+          <div className='flex rounded-md border border-dark-500  '>
             <Image 
               src={"/assets/icons/calendar.svg"}
               height={24}

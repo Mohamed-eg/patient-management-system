@@ -1,6 +1,5 @@
 import type { Config } from "tailwindcss";
 
-// eslint-disable-next-line @typescript-eslint/no-require-imports
 const { fontFamily } = require("tailwindcss/defaultTheme");
 
 const config = {
@@ -76,7 +75,6 @@ const config = {
       },
     },
   },
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;
 

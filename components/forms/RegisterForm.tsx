@@ -7,11 +7,11 @@ import {Form, FormControl} from "@/components/ui/form"
 import CustomFormField from "../CustomFormField"
 import SubmitButton from "../SubmitButton"
 import { useState } from "react"
-import { UserFormValidation } from "@/lib/valedation"
+import { PatientFormValidation } from "@/lib/valedation"
 import { useRouter } from "next/navigation"
-import { createUser } from "@/lib/actions/patients.actions"
+import { registerPatient } from "@/lib/actions/patients.actions"
 import { FormFieldType } from "./PatientForm"
-import { Doctors, GenderOptions, IdentificationTypes } from "@/constants"
+import { Doctors, GenderOptions, IdentificationTypes, PatientFormDefaultValues } from "@/constants"
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group"
 import { Label } from "../ui/label"
 import { SelectItem } from "../ui/select"
@@ -23,9 +23,10 @@ const RegisterForm=({user}:{user:User})=> {
     const router =useRouter();
     const [isLoading,setIsLoading]=useState(false)
   // 1. Define your form.
-  const form = useForm<z.infer<typeof UserFormValidation>>({
-    resolver: zodResolver(UserFormValidation),
+  const form = useForm<z.infer<typeof PatientFormValidation>>({
+    resolver: zodResolver(PatientFormValidation),
     defaultValues: {
+      ...PatientFormDefaultValues,
       name:"",
       email:"",
       phone:"",
@@ -33,13 +34,28 @@ const RegisterForm=({user}:{user:User})=> {
   })
 
   // 2. Define a submit handler.
- async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>) {
+ async function onSubmit(values: z.infer<typeof PatientFormValidation>) {
    setIsLoading(true);
+   let formDate;
+   if (values.identificationDocument && values.identificationDocument.length > 0) {
+     const blobFile = new Blob(values.identificationDocument[0], {
+       type: values.identificationDocument[0].type,
+     })
+     formDate = new FormData();
+     formDate.append('blobFile', blobFile);
+     formDate.append('fileName',values.identificationDocument[0].name);
+   }
    try{
-    const userData ={name, email, phone}
-    const user =await createUser(userData);
-
-    if(user) router.push(`/patients/${user.$id}/register`,)
+    const patientData = {
+      ...values,
+      userId: user.$id,
+      birthDate: new Date(values.birthDate),
+      identificationDocument: formDate,
+    }
+    const patient = await registerPatient(patientData)
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    //@ts-ignore
+    if(patient) router.push(`/patients/${user.$id}/new-appointment`)
    }catch(error){
     console.log(error)
    }
