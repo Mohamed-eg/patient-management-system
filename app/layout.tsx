@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import {Plus_Jakarta_Sans} from "next/font/google";
 import "./globals.css";
-import {cn} from '@/lib/utils'
+import {cn} from '@/lib/utils';
+import AuthProvider from '@/context/AuthProvider'
 import { ThemeProvider } from "@/components/theme-provider";
 const fontSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
 export default function RootLayout({children}: Readonly<{children: React.ReactNode;}>) {
   return (
     <html lang="en">
+      <AuthProvider>
       <body
         className={cn('min-h-screen font-sans antialiased',fontSans.variable)}
       >
@@ -27,6 +29,7 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
             {children}
           </ThemeProvider>
       </body>
+      </AuthProvider>
     </html>
   );
 }

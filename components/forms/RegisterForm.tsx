@@ -19,7 +19,6 @@ import Image from "next/image"
 import FileUploader from "../FileUploader"
 
 const RegisterForm=({user}:{user:User})=> {
-    console.log(user)
     const router =useRouter();
     const [isLoading,setIsLoading]=useState(false)
   // 1. Define your form.
@@ -32,12 +31,14 @@ const RegisterForm=({user}:{user:User})=> {
       phone:"",
     },
   })
-
   // 2. Define a submit handler.
  async function onSubmit(values: z.infer<typeof PatientFormValidation>) {
+
    setIsLoading(true);
    let formDate;
+   
    if (values.identificationDocument && values.identificationDocument.length > 0) {
+
      const blobFile = new Blob(values.identificationDocument[0], {
        type: values.identificationDocument[0].type,
      })
@@ -48,13 +49,12 @@ const RegisterForm=({user}:{user:User})=> {
    try{
     const patientData = {
       ...values,
-      userId: user.$id,
+      userid: user.$id,
       birthDate: new Date(values.birthDate),
       identificationDocument: formDate,
     }
+    console.log(patientData)
     const patient = await registerPatient(patientData)
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    //@ts-ignore
     if(patient) router.push(`/patients/${user.$id}/new-appointment`)
    }catch(error){
     console.log(error)
@@ -62,7 +62,7 @@ const RegisterForm=({user}:{user:User})=> {
   }
   return(
     <Form {...form}>
-    <form onSubmit={form.handleSubmit(onSubmit)} className=" space-y-12 flex-1">
+    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-12 flex-1">
         <section className="space-y-4">
             <h1 className="header">Welcome 👋</h1>
             <p className="text-dark-700">Let us know more about yourself.</p>
@@ -142,7 +142,7 @@ const RegisterForm=({user}:{user:User})=> {
         <CustomFormField
           fieldType={FormFieldType.INPUT}
           control={form.control}
-          name='Occupation'
+          name='occupation'
           label = 'Occupation'
           placeholder = 'Software Engineer'
           />
@@ -301,7 +301,7 @@ const RegisterForm=({user}:{user:User})=> {
           label="I Consent to privacy policy"
         />
         
-      <SubmitButton isLoading={isLoading}>Get started</SubmitButton>
+      <SubmitButton isLoading={false}>Get started</SubmitButton>
     </form>
   </Form>
   )

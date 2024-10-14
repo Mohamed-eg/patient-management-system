@@ -67,6 +67,7 @@ export const registerPatient = async ({identificationDocument, ...patient}:Regis
                 ...patient
             }
         )
+     return parseStringify(newPatient)
     } catch (error) {
         console.log(error)
     }
