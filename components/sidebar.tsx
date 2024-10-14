@@ -5,7 +5,6 @@ import { Layout, LayoutHeader } from "./custom/layout";
 import { Button } from "./custom/button";
 import Nav from "./nav";
 import { cn } from "@/lib/utils";
-import {SideLink} from '@/types'
 
 interface SidebarProps extends React.HTMLAttributes<HTMLElement> {
   isCollapsed: boolean;

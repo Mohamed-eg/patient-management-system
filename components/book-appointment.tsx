@@ -14,14 +14,14 @@ import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { CalendarDays, Clock } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
-import { toast } from "sonner";
+// import { toast } from "sonner";
 
 function BookAppointment({ doctor }: any) {
   const [date, setDate] = useState(new Date());
   const [timeSlot, setTimeSlot] = useState<{ time: string }[]>();
   const [selectedTimeSlot, setSelectedTimeSlot] = useState();
   const [note, setNote] = useState();
-
+  console.log(doctor)
   useEffect(() => {
     getTime();
   }, []);
@@ -50,6 +50,7 @@ function BookAppointment({ doctor }: any) {
       }
     );
     // Code for saving booking
+    console.log(responce)
   };
 
   const isPastDay = (day: any) => {
@@ -90,7 +91,7 @@ function BookAppointment({ doctor }: any) {
                   <div className="grid grid-cols-3 gap-2 border rounded-lg p-5">
                     {timeSlot?.map((item: any, index: any) => (
                       <h2
-                      key={Math.random().toString(36)}
+                      key={`${index}${Math.random().toString(36)}`}
                         onClick={() => setSelectedTimeSlot(item.time)}
                         className={`p-2 border cursor-pointer text-center hover:bg-primary hover:text-white rounded-full ${
                           item.time == selectedTimeSlot &&

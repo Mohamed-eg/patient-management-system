@@ -9,7 +9,7 @@ import { catigoryList } from "@/constants";
 
 function CategorySearch({user}:{user:User}) {
   const categoryList = catigoryList
-
+  console.log(user)
   return (
     <div className="mb-10 items-center px-5 flex flex-col gap-3">
       <h2 className="font-bold text-4xl tracking-wide">

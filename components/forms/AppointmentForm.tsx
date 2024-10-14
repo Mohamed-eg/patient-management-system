@@ -4,16 +4,17 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import {Form} from "@/components/ui/form"
-import CustomFormField from "../CustomFormField"
+// import CustomFormField from "../CustomFormField"
 import SubmitButton from "../SubmitButton"
 import { useState } from "react"
 import { UserFormValidation } from "@/lib/valedation"
 import { useRouter } from "next/navigation"
 import { createUser } from "@/lib/actions/patients.actions"
-import { FormFieldType } from "./PatientForm"
+// import { FormFieldType } from "./PatientForm"
 
 const AppointmentForm=({
-    userId, patientId, type
+    // userId, patientId,
+     type
 }:{
     userId: string;
     patientId: string;
@@ -52,11 +53,7 @@ const AppointmentForm=({
         </section>
         {type !== "cancel" && (
             <>
-            <CustomFormField
-            fieldType={FormFieldType.SELECT}
-            >
-                
-            </CustomFormField>
+           hello
             </>
         )}
       <SubmitButton isLoading={isLoading}>Get started</SubmitButton>

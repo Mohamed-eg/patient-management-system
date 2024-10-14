@@ -54,3 +54,14 @@ declare type SearchParamProps = {
     appointment: Appointment;
     type: string;
   };
+  declare type NavLink = {
+    title: string;
+    label?: string;
+    href: string;
+    icon: JSX.Element;
+  };
+  
+  declare type SideLink = NavLink & {
+    sub?: NavLink[];
+  };
+  

@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic'
  
 const DoctorDetailNoSSR = dynamic(() => import("@/components/doctor-detail"), { ssr: false })
 function Details({ params }: any) {
+  console.log(params)
   const doctor = {
     url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
     Name: "Mahafujul Haque",

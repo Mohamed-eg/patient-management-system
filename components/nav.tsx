@@ -23,7 +23,6 @@ import {
 } from "./ui/tooltip";
 import { cn } from "@/lib/utils";
 import useCheckActiveNav from "@/hooks/use-check-active-nav";
-import { SideLink } from "@/types";
 // import { SideLink } from "@/data/sidelinks_for_users";
 
 interface NavProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -64,7 +63,7 @@ export default function Nav({
     <div
       data-collapsed={isCollapsed}
       className={cn(
-        "group border-b bg-background py-2 transition-[max-height,padding] duration-500 data-[collapsed=true]:py-2 md:border-none",
+        "group sha border-b bg-background py-2 transition-[max-height,padding] duration-500 data-[collapsed=true]:py-2 md:border-none",
         className
       )}
     >

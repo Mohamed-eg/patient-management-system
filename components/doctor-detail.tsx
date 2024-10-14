@@ -1,4 +1,4 @@
-import { GraduationCap, MapPin, IndianRupee } from "lucide-react";
+import { GraduationCap, MapPin } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 import BookAppointment from "./book-appointment";
