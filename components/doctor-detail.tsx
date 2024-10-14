@@ -51,7 +51,7 @@ function DoctorDetail({ doctor }: any) {
             <span>{doctor.Address}</span>
           </h2>
           <h2 className="text-md flex gap-2 text-gray-500">
-            <IndianRupee />
+            <span className="font-bold " >EGP</span>
             <span>{`${doctor.feePerCunsultation} Consultation fee at clinic`}</span>
           </h2>
           <div className="flex gap-3">

@@ -49,13 +49,13 @@ const RegisterForm=({user}:{user:User})=> {
    try{
     const patientData = {
       ...values,
-      userid: user.$id,
+      userId: user.$id,
       birthDate: new Date(values.birthDate),
       identificationDocument: formDate,
     }
     console.log(patientData)
     const patient = await registerPatient(patientData)
-    if(patient) router.push(`/patients/${user.$id}/new-appointment`)
+    if(patient) router.push(`/patients/${user.$id}/homePage`)
    }catch(error){
     console.log(error)
    }
@@ -301,7 +301,7 @@ const RegisterForm=({user}:{user:User})=> {
           label="I Consent to privacy policy"
         />
         
-      <SubmitButton isLoading={false}>Get started</SubmitButton>
+      <SubmitButton isLoading={isLoading}>Get started</SubmitButton>
     </form>
   </Form>
   )

@@ -4,11 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-import { useSession, signOut } from "next-auth/react";
+import { signOut } from "next-auth/react";
 import { LayoutDashboard } from "lucide-react";
 
-function Header() {
-  const { data: session } = useSession();
+function Header({user}:{user:User}) {
+ 
 
   // Function to handle sign out
   async function onClickSignOut() {
@@ -31,7 +31,7 @@ function Header() {
     {
       id: 1,
       name: "Home",
-      path: "/",
+      path: `/patients/${user.$id}/homePage`,
     },
     {
       id: 2,
@@ -46,7 +46,7 @@ function Header() {
   ];
 
   // Render header for authenticated users
-  if (session) {
+  if (user) {
     return (
       <div className="flex items-center justify-between p-4 shadow-sm">
         <div className="flex items-center gap-10">

@@ -24,7 +24,7 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
       >
        <ThemeProvider
             attribute="class"
-            defaultTheme="system"
+            defaultTheme="light"
           >
             {children}
           </ThemeProvider>
