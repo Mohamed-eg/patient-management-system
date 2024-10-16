@@ -3,129 +3,23 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-function DoctorSuggestionList() {
-  const doctorList = [
-    {
-      id: 1,
-      url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
-      Name: "Mahafujul Haque",
-      Year_of_Experience: "15 Years",
-      Address: "Kalyani",
-      specialization: "Orthopedics",
-    },
-    {
-      id: 2,
-      url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
-      Name: "Mahafujul Haque",
-      Year_of_Experience: "15 Years",
-      Address: "Kalyani",
-      specialization: "Internal Medicine",
-    },
-    {
-      id: 3,
-      url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
-      Name: "Mahafujul Haque",
-      Year_of_Experience: "15 Years",
-      Address: "Kalyani",
-      specialization: "Radiology",
-    },
-    {
-      id: 4,
-      url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
-      Name: "Mahafujul Haque",
-      Year_of_Experience: "15 Years",
-      Address: "Kalyani",
-      specialization: "Orthopedics",
-    },
-    {
-      id: 5,
-      url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
-      Name: "Mahafujul Haque",
-      Year_of_Experience: "15 Years",
-      Address: "Kalyani",
-      specialization: "Orthopedics",
-    },
-    {
-      id: 6,
-      url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
-      Name: "Mahafujul Haque",
-      Year_of_Experience: "15 Years",
-      Address: "Kalyani",
-      specialization: "Orthopedics",
-    },
-    {
-      id: 7,
-      url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
-      Name: "Mahafujul Haque",
-      Year_of_Experience: "15 Years",
-      Address: "Kalyani",
-      specialization: "Orthopedics",
-    },
-    {
-      id: 8,
-      url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
-      Name: "Mahafujul Haque",
-      Year_of_Experience: "15 Years",
-      Address: "Kalyani",
-      specialization: "Orthopedics",
-    },
-    {
-      id: 9,
-      url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
-      Name: "Mahafujul Haque",
-      Year_of_Experience: "15 Years",
-      Address: "Kalyani",
-      specialization: "Orthopedics",
-    },
-    {
-      id: 10,
-      url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
-      Name: "Mahafujul Haque",
-      Year_of_Experience: "15 Years",
-      Address: "Kalyani",
-      specialization: "Orthopedics",
-    },
-    {
-      id: 11,
-      url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
-      Name: "Mahafujul Haque",
-      Year_of_Experience: "15 Years",
-      Address: "Kalyani",
-      specialization: "Orthopedics",
-    },
-    {
-      id: 12,
-      url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
-      Name: "Mahafujul Haque",
-      Year_of_Experience: "15 Years",
-      Address: "Kalyani",
-      specialization: "Orthopedics",
-    },
-    {
-      id: 13,
-      url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
-      Name: "Mahafujul Haque",
-      Year_of_Experience: "15 Years",
-      Address: "Kalyani",
-      specialization: "Orthopedics",
-    },
-    {
-      id: 14,
-      url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
-      Name: "Mahafujul Haque",
-      Year_of_Experience: "15 Years",
-      Address: "Kalyani",
-      specialization: "Orthopedics",
-    },
-    {
-      id: 15,
-      url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
-      Name: "Mahafujul Haque",
-      Year_of_Experience: "15 Years",
-      Address: "Kalyani",
-      specialization: "Orthopedics",
-    },
-  ];
+
+// Define a type for each suggestion object
+type Suggestion = {
+  id: number;
+  Name: string;
+  url: string;
+  specialization: string;
+  Year_of_Experience: string
+  // Add any other fields you need
+};
+
+// Define your component with the correct props type
+interface DoctorSuggestionListProps {
+  Suggestions: Suggestion[]; // An array of Suggestion objects
+}
+function DoctorSuggestionList({Suggestions}:DoctorSuggestionListProps) {
+  const doctorList = Suggestions;
   return (
     <div className=" p-4 border-[1px] mt-5 md:ml-5 rounded-lg ">
       <h2 className="mb-3 font-bold">Suggestions</h2>

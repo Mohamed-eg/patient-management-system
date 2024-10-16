@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-
 declare type SearchParamProps = {
     params: { [key: string]: string };
     searchParams: { [key: string]: string | string[] | undefined };
@@ -19,17 +18,23 @@ declare type SearchParamProps = {
       location:string
   }
 
+  declare interface CreateUserParams1 {
+    name:string,
+    email:string,
+    phone:string
+  }
+
   declare interface LoginUserParams {
       email:string,
   
       password:string,
   }
 
-  declare interface User extends CreateUserParams {
+  declare interface User extends CreateUserParams1 {
     $id: string;
   }
   
-  declare interface RegisterUserParams extends CreateUserParams {
+  declare interface RegisterUserParams extends CreateUserParams1 {
     userId: string;
     birthDate: Date;
     gender: Gender;
@@ -48,6 +53,7 @@ declare type SearchParamProps = {
     identificationNumber?: string | undefined;
     identificationDocument?: FormData | undefined;
     privacyConsent: boolean;
+    
   }
   
   declare type CreateAppointmentParams = {
