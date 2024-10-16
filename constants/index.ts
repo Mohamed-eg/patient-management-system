@@ -1,5 +1,7 @@
 export const GenderOptions = ["male", "female", "other"];
 
+export const APIServerURL ='http://localhost:5000/api/v1'
+
 export const catigoryList =[
   {
     name: "Dermatologist",

@@ -1,8 +1,15 @@
+"use client"
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import { useEffect, useState } from "react";
 
 function DoctorList({ doctorList, heading = "Popular Doctors" }: any) {
+  
+ // eslint-disable-next-line @typescript-eslint/no-unused-vars
+ const  [myDoctors,setMyDoctors]= useState(doctorList)
+  useEffect(()=>{
+
+  },[])
   return (
     <div className="mb-10 px-8">
       <h2 className="font-bold text-xl">{heading}</h2>
@@ -12,8 +19,8 @@ function DoctorList({ doctorList, heading = "Popular Doctors" }: any) {
         sm:grid-cols-2 md:grid-cols-3
         gap-7 mt-4 lg:grid-cols-4"
       >
-        {doctorList.length > 0
-          ? doctorList.map((doctor: any, index: any) => (
+        {myDoctors.length > 0
+          ? myDoctors.map((doctor: any, index: any) => (
               <div
                 className="border-[1px] rounded-lg p-3
                 cursor-pointer hover:border-primary
@@ -37,7 +44,7 @@ function DoctorList({ doctorList, heading = "Popular Doctors" }: any) {
                   <h2 className="font-bold">{doctor.name}</h2>
                   <h2 className="text-primary text-sm">{`${doctor.experience} Years`}</h2>
                   <h2 className="text-gray-500 text-sm">{doctor.city}</h2>
-                  <Link href={"/details/" + doctor?._id} className="w-full">
+                  <Link href={`details/` + doctor?.id} className="w-full">
                     <h2
                       className="p-2 px-3 border-[1px] border-primary
                         text-primary rounded-full w-full text-center

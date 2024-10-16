@@ -8,7 +8,7 @@ export const createUser = async (user:CreateUserParams)=>{
 
     try {
         console.log(user)
-        const newUser =await users.create(ID.unique(),user.email,user.phone,undefined,user.name)
+        const newUser =await users.create(ID.unique(),user.email,user.phone,user.password,user.firstName)
         
         console.log(newUser)
         return newUser

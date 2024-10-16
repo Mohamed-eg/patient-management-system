@@ -9,10 +9,22 @@ declare type SearchParamProps = {
   declare type Status = "pending" | "scheduled" | "cancelled";
   
   declare interface CreateUserParams {
-    name: string;
-    email: string;
-    phone: string;
+    first_name:string,
+      last_name: string,
+      email:string,
+      phone:string,
+      password:string,
+      user_type:string,
+      specialization: string | undefined,
+      location:string
   }
+
+  declare interface LoginUserParams {
+      email:string,
+  
+      password:string,
+  }
+
   declare interface User extends CreateUserParams {
     $id: string;
   }

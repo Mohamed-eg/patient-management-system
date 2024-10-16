@@ -7,7 +7,7 @@ import { toast } from "sonner";
 import { signOut } from "next-auth/react";
 import { LayoutDashboard } from "lucide-react";
 
-function Header({user}:{user:User}) {
+function Header({userId}:{userId:string}) {
  
 
   // Function to handle sign out
@@ -31,7 +31,7 @@ function Header({user}:{user:User}) {
     {
       id: 1,
       name: "Home",
-      path: `/patients/${user.$id}/homePage`,
+      path: `/patients/${userId}/homePage`,
     },
     {
       id: 2,
@@ -46,7 +46,7 @@ function Header({user}:{user:User}) {
   ];
 
   // Render header for authenticated users
-  if (user) {
+  if (userId) {
     return (
       <div className="flex items-center justify-between p-4 shadow-sm">
         <div className="flex items-center gap-10">

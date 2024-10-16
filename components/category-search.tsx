@@ -7,9 +7,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { catigoryList } from "@/constants";
 
-function CategorySearch({user}:{user:User}) {
+function CategorySearch({userId}:{userId:string}) {
   const categoryList = catigoryList
-  console.log(user)
+  console.log(userId)
   return (
     <div className="mb-10 items-center px-5 flex flex-col gap-3">
       <h2 className="font-bold text-4xl tracking-wide">
