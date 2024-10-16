@@ -5,6 +5,8 @@ import DoctorSuggestionList from "@/components/doctor-suggestion-list";
 import dynamic from 'next/dynamic'
 import axios from "axios";
 import { APIServerURL, doctorlist } from "@/constants";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
 const DoctorDetailNoSSR = dynamic(() => import("@/components/doctor-detail"), { ssr: false })
 function Details({ params }: any) {
   console.log(params,`${APIServerURL}/doctors/${params.recordId}`)
@@ -47,6 +49,7 @@ function Details({ params }: any) {
 
   return (
     <div className="p-5 md:px-10">
+      <Header userId={params.userId}/>
       <h2 className="font-bold text-[22px]">Details</h2>
       <div className="grid grid-cols-1 lg:grid-cols-4 ">
         {/* Doctor Detail  */}
@@ -58,6 +61,7 @@ function Details({ params }: any) {
           <DoctorSuggestionList Suggestions={doctorlist} />
         </div>
       </div>
+          <Footer/>
     </div>
   );
 }
