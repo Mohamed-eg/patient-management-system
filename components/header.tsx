@@ -36,12 +36,12 @@ function Header({userId}:{userId:string}) {
     {
       id: 2,
       name: "Explore",
-      path: "/explore",
+      path: `/patients/${userId}/explore`,
     },
     {
       id: 3,
       name: "Contact Us",
-      path: "/contact-us",
+      path: `/patients/${userId}/contact-us`,
     },
   ];
 
