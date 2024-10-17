@@ -22,6 +22,7 @@ function BookAppointment({ doctor }: any) {
   const [date, setDate] = useState(new Date());
   const [timeSlot, setTimeSlot] = useState<{ time: string }[]>();
   const [selectedTimeSlot, setSelectedTimeSlot] = useState();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [note, setNote] = useState("");
   console.log(selectedTimeSlot)
   // const getCurrentDate = () => {

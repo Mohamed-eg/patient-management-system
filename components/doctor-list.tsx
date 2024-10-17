@@ -42,7 +42,7 @@ function DoctorList({ doctorList, heading = "Popular Doctors" }: any) {
                     {doctor.specialization}
                   </h2>
                   <h2 className="font-bold">{doctor.name}</h2>
-                  <h2 className="text-primary text-sm">{`${doctor.experience} Years`}</h2>
+                  <h2 className="text-primary text-sm">{`${doctor.Year_of_Experience} Years`}</h2>
                   <h2 className="text-gray-500 text-sm">{doctor.city}</h2>
                   <Link href={`details/` + doctor?.id} className="w-full">
                     <h2

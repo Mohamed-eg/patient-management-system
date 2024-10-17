@@ -111,7 +111,7 @@ export const doctorlist = [
     id: 3,
     url: "/assets/doctors/2.png",
     Name: "Mohammed Ali",
-    Year_of_Experience: "15 Years",
+    Year_of_Experience: "13 Years",
     Address: "Cairo",
     specialization: "Radiology"
   },
@@ -119,7 +119,7 @@ export const doctorlist = [
     id: 4,
     url: "/assets/doctors/3.jpg",
     Name: "Mohammed Ali",
-    Year_of_Experience: "15 Years",
+    Year_of_Experience: "11 Years",
     Address: "Cairo",
     specialization: "Orthopedics"
   },
@@ -127,7 +127,7 @@ export const doctorlist = [
     id: 5,
     url: "/assets/doctors/4.jpg",
     Name: "Mohammed Ali",
-    Year_of_Experience: "15 Years",
+    Year_of_Experience: "8 Years",
     Address: "Cairo",
     specialization: "Orthopedics"
   },
@@ -135,7 +135,7 @@ export const doctorlist = [
     id: 6,
     url: "/assets/doctors/5.jpg",
     Name: "Mohammed Ali",
-    Year_of_Experience: "15 Years",
+    Year_of_Experience: "9 Years",
     Address: "Cairo",
     specialization: "Orthopedics"
   },
@@ -143,7 +143,7 @@ export const doctorlist = [
     id: 7,
     url: "/assets/doctors/6.jpg",
     Name: "Mohammed Ali",
-    Year_of_Experience: "15 Years",
+    Year_of_Experience: "12 Years",
     Address: "Cairo",
     specialization: "Orthopedics"
   },
@@ -151,7 +151,7 @@ export const doctorlist = [
     id: 8,
     url: "/assets/doctors/7.jpg",
     Name: "Mohammed Ali",
-    Year_of_Experience: "15 Years",
+    Year_of_Experience: "5 Years",
     Address: "Cairo",
     specialization: "Orthopedics"
   },
@@ -159,7 +159,7 @@ export const doctorlist = [
     id: 9,
     url: "/assets/doctors/8.avif",
     Name: "Mohammed Ali",
-    Year_of_Experience: "15 Years",
+    Year_of_Experience: "7 Years",
     Address: "Cairo",
     specialization: "Orthopedics"
   },
@@ -167,7 +167,7 @@ export const doctorlist = [
     id: 10,
     url: "/assets/doctors/9.avif",
     Name: "Mohammed Ali",
-    Year_of_Experience: "15 Years",
+    Year_of_Experience: "9 Years",
     Address: "Cairo",
     specialization: "Orthopedics"
   },
@@ -175,7 +175,7 @@ export const doctorlist = [
     id: 11,
     url: "/assets/doctors/10.png",
     Name: "Mohammed Ali",
-    Year_of_Experience: "15 Years",
+    Year_of_Experience: "4 Years",
     Address: "Cairo",
     specialization: "Orthopedics"
   },
@@ -191,7 +191,7 @@ export const doctorlist = [
     id: 13,
     url: "/assets/doctors/12.png",
     Name: "Mohammed Ali",
-    Year_of_Experience: "15 Years",
+    Year_of_Experience: "8 Years",
     Address: "Cairo",
     specialization: "Orthopedics"
   },
@@ -199,7 +199,7 @@ export const doctorlist = [
     id: 14,
     url: "/assets/doctors/13.png",
     Name: "Mohammed Ali",
-    Year_of_Experience: "15 Years",
+    Year_of_Experience: "3 Years",
     Address: "Cairo",
     specialization: "Orthopedics"
   },
@@ -207,7 +207,7 @@ export const doctorlist = [
     id: 15,
     url: "/assets/doctors/14.png",
     Name: "Mohammed Ali",
-    Year_of_Experience: "15 Years",
+    Year_of_Experience: "8 Years",
     Address: "Cairo",
     specialization: "Orthopedics"
   },
