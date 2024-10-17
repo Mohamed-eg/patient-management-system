@@ -4,7 +4,12 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 function DoctorList({ doctorList, heading = "Popular Doctors" }: any) {
-  
+ /**  id: number;
+  url: string;
+  Name: string;
+  Year_of_Experience: string;
+  Address: string;
+  specialization: string; */ 
  // eslint-disable-next-line @typescript-eslint/no-unused-vars
  const  [myDoctors,setMyDoctors]= useState(doctorList)
   useEffect(()=>{
@@ -41,9 +46,9 @@ function DoctorList({ doctorList, heading = "Popular Doctors" }: any) {
                   >
                     {doctor.specialization}
                   </h2>
-                  <h2 className="font-bold">{doctor.name}</h2>
+                  <h2 className="font-bold">{doctor.Name}</h2>
                   <h2 className="text-primary text-sm">{`${doctor.Year_of_Experience} Years`}</h2>
-                  <h2 className="text-gray-500 text-sm">{doctor.city}</h2>
+                  <h2 className="text-gray-500 text-sm">{doctor.Address}</h2>
                   <Link href={`details/` + doctor?.id} className="w-full">
                     <h2
                       className="p-2 px-3 border-[1px] border-primary

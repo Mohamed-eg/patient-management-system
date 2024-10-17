@@ -8,7 +8,7 @@ import { APIServerURL, doctorlist } from "@/constants";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 const DoctorDetailNoSSR = dynamic(() => import("@/components/doctor-detail"), { ssr: false })
-function Details({ params }: any) {
+function Details({ params }) {
   console.log(params,`${APIServerURL}/doctors/${params.recordId}`)
   const doctor = {
     id:params.recordId,
@@ -32,7 +32,7 @@ function Details({ params }: any) {
     // handle success
     console.log(response);
     setMyDoctor({
-      id:params.recordId,
+      id:`${params.recordId}`,
       patientId:params.userId,
       url:"/beautiful-young-female-doctor-looking-camera-office.jpg",
       Name: "Nore mahfoz",
@@ -48,6 +48,8 @@ function Details({ params }: any) {
   .catch(function (error) {
     // handle error
     console.log(error);
+    const doctor = doctorlist.find(doc => doc.id == params.recordId);
+    setMyDoctor(doctor)
   })
   },[])
 

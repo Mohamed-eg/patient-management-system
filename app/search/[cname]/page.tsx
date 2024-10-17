@@ -4,23 +4,26 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import axios from "axios";
 import { capitalizeFirstLetter } from "@/helper/capitalizeFirstLetter";
+import { doctorlist } from "@/constants";
 interface Doctor {
-  _id: string;
-  firstName: string;
-  lastName: string;
-  url: string;
-  feePerConsultation: number;
-  experience: number;
-  specialization: string;
-  city: string;
-  degrees: string[];
-  name: string;
+  id: string;
+    url: string;
+    Name: string;
+    Year_of_Experience: string;
+    Address: string;
+    feePerCunsultation: string;
+    About: string;
+    Suggestions: never[];
+    patientId: string;
+    degrees: string;
+    specialization: string;
 }
 
 function Search({ params }: any) {
-  const [doctors, setDoctors] = useState<Doctor[]>([]);
+  const [doctors, setDoctors] = useState<Doctor[]>(doctorlist);
   const param = useParams();
   const specialization = param.cname;
+  const filteredDoctors = doctors.filter(doctor => doctor.specialization == specialization);
 
   useEffect(() => {
     (async function () {
@@ -31,137 +34,16 @@ function Search({ params }: any) {
         setDoctors(response.data.doctors);
       } catch (error: any) {
         console.error("Error fetching doctors data:", error);
+        console.log(doctors,specialization)
+        setDoctors(filteredDoctors)
       }
     })();
   }, []);
-
-  // const doctorList = [
-  //   {
-  //     id: 1,
-  //     url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
-  //     Name: "Mahafujul Haque",
-  //     Year_of_Experience: "15 Years",
-  //     Address: "Kalyani",
-  //     specialization: "Orthopedics",
-  //   },
-  //   {
-  //     id: 1,
-  //     url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
-  //     Name: "Mahafujul Haque",
-  //     Year_of_Experience: "15 Years",
-  //     Address: "Kalyani",
-  //     specialization: "Internal Medicine",
-  //   },
-  //   {
-  //     id: 1,
-  //     url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
-  //     Name: "Mahafujul Haque",
-  //     Year_of_Experience: "15 Years",
-  //     Address: "Kalyani",
-  //     specialization: "Radiology",
-  //   },
-  //   {
-  //     id: 1,
-  //     url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
-  //     Name: "Mahafujul Haque",
-  //     Year_of_Experience: "15 Years",
-  //     Address: "Kalyani",
-  //     specialization: "Orthopedics",
-  //   },
-  //   {
-  //     id: 1,
-  //     url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
-  //     Name: "Mahafujul Haque",
-  //     Year_of_Experience: "15 Years",
-  //     Address: "Kalyani",
-  //     specialization: "Orthopedics",
-  //   },
-  //   {
-  //     id: 1,
-  //     url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
-  //     Name: "Mahafujul Haque",
-  //     Year_of_Experience: "15 Years",
-  //     Address: "Kalyani",
-  //     specialization: "Orthopedics",
-  //   },
-  //   {
-  //     id: 1,
-  //     url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
-  //     Name: "Mahafujul Haque",
-  //     Year_of_Experience: "15 Years",
-  //     Address: "Kalyani",
-  //     specialization: "Orthopedics",
-  //   },
-  //   {
-  //     id: 1,
-  //     url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
-  //     Name: "Mahafujul Haque",
-  //     Year_of_Experience: "15 Years",
-  //     Address: "Kalyani",
-  //     specialization: "Orthopedics",
-  //   },
-  //   {
-  //     id: 1,
-  //     url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
-  //     Name: "Mahafujul Haque",
-  //     Year_of_Experience: "15 Years",
-  //     Address: "Kalyani",
-  //     specialization: "Orthopedics",
-  //   },
-  //   {
-  //     id: 1,
-  //     url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
-  //     Name: "Mahafujul Haque",
-  //     Year_of_Experience: "15 Years",
-  //     Address: "Kalyani",
-  //     specialization: "Orthopedics",
-  //   },
-  //   {
-  //     id: 1,
-  //     url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
-  //     Name: "Mahafujul Haque",
-  //     Year_of_Experience: "15 Years",
-  //     Address: "Kalyani",
-  //     specialization: "Orthopedics",
-  //   },
-  //   {
-  //     id: 1,
-  //     url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
-  //     Name: "Mahafujul Haque",
-  //     Year_of_Experience: "15 Years",
-  //     Address: "Kalyani",
-  //     specialization: "Orthopedics",
-  //   },
-  //   {
-  //     id: 1,
-  //     url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
-  //     Name: "Mahafujul Haque",
-  //     Year_of_Experience: "15 Years",
-  //     Address: "Kalyani",
-  //     specialization: "Orthopedics",
-  //   },
-  //   {
-  //     id: 1,
-  //     url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
-  //     Name: "Mahafujul Haque",
-  //     Year_of_Experience: "15 Years",
-  //     Address: "Kalyani",
-  //     specialization: "Orthopedics",
-  //   },
-  //   {
-  //     id: 1,
-  //     url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
-  //     Name: "Mahafujul Haque",
-  //     Year_of_Experience: "15 Years",
-  //     Address: "Kalyani",
-  //     specialization: "Orthopedics",
-  //   },
-  // ];
   return (
     <div className="mt-5">
       <DoctorList
         heading={capitalizeFirstLetter(params.cname.replace(/%20/g, " "))}
-        doctorList={doctors}
+        doctorList={filteredDoctors}
       />
     </div>
   );
