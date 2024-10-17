@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { ID } from "node-appwrite"
 import {
   Dialog,
   DialogClose,
@@ -14,14 +15,19 @@ import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { CalendarDays, Clock } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
+import { APIServerURL } from "@/constants";
 // import { toast } from "sonner";
 
 function BookAppointment({ doctor }: any) {
   const [date, setDate] = useState(new Date());
   const [timeSlot, setTimeSlot] = useState<{ time: string }[]>();
   const [selectedTimeSlot, setSelectedTimeSlot] = useState();
-  const [note, setNote] = useState();
-  console.log(doctor)
+  const [note, setNote] = useState("");
+  console.log(selectedTimeSlot)
+  // const getCurrentDate = () => {
+  //   const currentDate = new Date();
+  //   return currentDate.toISOString().split('T')[0];
+  // };
   useEffect(() => {
     getTime();
   }, []);
@@ -42,15 +48,27 @@ function BookAppointment({ doctor }: any) {
 
   const saveBooking = () => {
     const responce: any = axios.post(
-      "http://localhost:3000/api/appointments/book",
+      `${APIServerURL}/appointments`,
       {
-        selectedTimeSlot,
-        note,
-        date,
+        id:ID.unique(),
+        patient_id: doctor.patientId,
+        doctor_id: doctor.id ,
+        schedule_id: Math.random(),
+        status: "pending",
+        created_at: `${date}-${selectedTimeSlot}`,
+        updated_at: `${date}-${selectedTimeSlot}`
       }
     );
     // Code for saving booking
-    console.log(responce)
+    console.log(responce,{
+      id:ID.unique(),
+      patient_id: doctor.patientId,
+      doctor_id: doctor.id ,
+      schedule_id: Math.random(),
+      status: "pending",
+      created_at: `${date}-${selectedTimeSlot}`,
+      updated_at: `${date}-${selectedTimeSlot}`
+    })
   };
 
   const isPastDay = (day: any) => {

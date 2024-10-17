@@ -17,6 +17,7 @@ import { Label } from "../ui/label"
 import { SelectItem } from "../ui/select"
 import Image from "next/image"
 import FileUploader from "../FileUploader"
+import { Button } from "../custom/button"
 
 const RegisterForm=({user}:{user:User})=> {
     const router =useRouter();
@@ -302,6 +303,7 @@ const RegisterForm=({user}:{user:User})=> {
         />
         
       <SubmitButton isLoading={isLoading}>Get started</SubmitButton>
+      <Button onClick={()=>{router.push("/")}} className="m-auto w-full font-bold">sign-up</Button>
     </form>
   </Form>
   )

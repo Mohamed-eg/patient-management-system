@@ -84,7 +84,7 @@ function DoctorDetail({ doctor }: any) {
         </div>
       </div>
       {/* About Doctor  */}
-      <div className="p-3 border-[1px] rounded-lg mt-5">
+      <div className="p-3 border-[1px] h-auto rounded-lg mt-5">
         <h2 className="font-bold text-[20px]">About Me</h2>
         <p className="text-gray-500 tracking-wide mt-2">{doctor.About}</p>
       </div>

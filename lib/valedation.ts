@@ -28,6 +28,10 @@ export const LoginFormValidation = z.object({
     .max(50, "password must be at most 50 characters"),
   email: z.string().email("Invalid email address"),
 });
+export const ContactFormValidation =z.object({
+  email: z.string().email("Invalid email address"),
+  feedback: z.string()
+})
 
 export const PatientFormValidation = z.object({
   name: z

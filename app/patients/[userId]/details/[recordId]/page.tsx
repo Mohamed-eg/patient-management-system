@@ -11,6 +11,8 @@ const DoctorDetailNoSSR = dynamic(() => import("@/components/doctor-detail"), { 
 function Details({ params }: any) {
   console.log(params,`${APIServerURL}/doctors/${params.recordId}`)
   const doctor = {
+    id:params.recordId,
+    patientId:params.userId,
     url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
     Name: "Nore mahfoz",
     Year_of_Experience: "15",
@@ -30,6 +32,8 @@ function Details({ params }: any) {
     // handle success
     console.log(response);
     setMyDoctor({
+      id:params.recordId,
+      patientId:params.userId,
       url:"/beautiful-young-female-doctor-looking-camera-office.jpg",
       Name: "Nore mahfoz",
       Year_of_Experience:"15",

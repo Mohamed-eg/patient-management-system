@@ -21,7 +21,7 @@ interface DoctorSuggestionListProps {
 function DoctorSuggestionList({Suggestions}:DoctorSuggestionListProps) {
   const doctorList = Suggestions;
   return (
-    <div className=" p-4 border-[1px] mt-5 md:ml-5 rounded-lg ">
+    <div className=" p-4 border-[1px] mt-5 md:ml-5 rounded-lg h-[80vh] overflow-y-scroll ">
       <h2 className="mb-3 font-bold">Suggestions</h2>
 
       {doctorList.map((doctor, index) => (

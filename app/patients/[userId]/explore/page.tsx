@@ -4,8 +4,8 @@ import Footer from "@/components/footer";
 const Explore = ({params: {userId}}:SearchParamProps) => {
   return (
     <div>
-      <Header userId={userId}></Header>
-
+      <Header userId={userId}/>
+    
       <Footer/>
       </div>
   )
