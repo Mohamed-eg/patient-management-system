@@ -4,15 +4,15 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-import {Form, FormControl} from "@/components/ui/form"
+import {Form} from "@/components/ui/form"
 import CustomFormField from "../CustomFormField"
 import SubmitButton from "../SubmitButton"
 import { useState } from "react"
 import { LoginFormValidation } from "@/lib/valedation"
 import { useRouter } from "next/navigation"
-import { createUser } from "@/lib/actions/patients.actions"
 import axios from "axios"
 import { APIServerURL } from "@/constants"
+import { Button } from "../custom/button"
 // const formSchema = z.object({
 //   username: z.string().min(2, {
 //     message: "Username must be at least 2 characters.",
@@ -31,6 +31,7 @@ export enum FormFieldType {
 const LoginForm=()=> {
     const router =useRouter();
     const [isLoading,setIsLoading]=useState(false)
+    const [invalied,setInvalied]=useState(false)
   // 1. Define your form.
   const form = useForm<z.infer<typeof LoginFormValidation>>({
     resolver: zodResolver(LoginFormValidation),
@@ -39,7 +40,9 @@ const LoginForm=()=> {
       password:"",
     },
   })
-
+const handleServerError =()=>{
+  setInvalied(true)
+}
   // 2. Define a submit handler.
  async function onSubmit({email, password}: z.infer<typeof LoginFormValidation>) {
    setIsLoading(true);
@@ -56,13 +59,14 @@ const LoginForm=()=> {
     console.log('Success:', response.data); // Handle success response
     router.push(`/patients/${response.data.user.uid}/homePage`)
   })
-  .catch(error => {
-    console.error('Error:', error.response ? error.response.data : error.message); // Handle error response
-  })
-
-   }catch(error){
-    console.log(error)
-   }
+   }catch (error: any) {
+    if (error.response && error.response.status === 500) {
+      console.log('Error 500: Internal Server Error');
+      handleServerError();  // Run a function when 500 error occurs
+    } else {
+      console.error('Another error occurred:', error);
+    }
+  }
   }
   return(
     <Form {...form}>
@@ -90,7 +94,9 @@ const LoginForm=()=> {
         iconSrc = "/assets/icons/user.svg"
         iconAlt ='password'
         />
-      <SubmitButton isLoading={isLoading}>Get started</SubmitButton>
+        <p className="text-red-700">{invalied&&`Invalied email or password`}</p>
+      <SubmitButton isLoading={false}>Get started</SubmitButton>
+      <Button onClick={()=>{router.push("/")}} className="m-auto w-full font-bold">sign-up</Button>
     </form>
   </Form>
   )

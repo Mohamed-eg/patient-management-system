@@ -1,8 +1,13 @@
 import React from 'react'
-
+import Header from "@/components/header";
+import Footer from "@/components/footer";
 const ContactUs = () => {
   return (
-    <div>ContactUs</div>
+    <div>
+      <Header userId={userId}></Header>
+
+      <Footer/>
+      </div>
   )
 }
 

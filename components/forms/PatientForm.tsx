@@ -17,11 +17,7 @@ import { SelectItem } from "../ui/select"
 import { APIServerURL, catigoryList } from "@/constants"
 import Image from "next/image"
 import axios from "axios"
-// const formSchema = z.object({
-//   username: z.string().min(2, {
-//     message: "Username must be at least 2 characters.",
-//   }),
-// })
+import { Button } from "../ui/button"
 export enum FormFieldType {
     INPUT= 'input',
     TEXTAREA = 'textarea',
@@ -200,6 +196,9 @@ const PatientForm=()=> {
         iconAlt ='location'
         />
       <SubmitButton isLoading={false}>Get started</SubmitButton>
+      <div className="w-full flex">
+        <Button onClick={()=>{router.push("login")}} className="m-auto w-full font-bold">Login</Button>
+        </div>
     </form>
   </Form>
   )
