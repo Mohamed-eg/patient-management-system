@@ -94,22 +94,22 @@ export const doctorlist = [
   {
     id: 1,
     url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
-    Name: "Mohammed Ali",
+    Name: "Nore Ali",
     Year_of_Experience: "15 Years",
     Address: "Cairo",
     specialization: "Orthopedics"
   },
   {
     id: 2,
-    url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
+    url: "/assets/doctors/1.jpg",
     Name: "Mohammed Ali",
-    Year_of_Experience: "15 Years",
+    Year_of_Experience: "10 Years",
     Address: "Cairo",
     specialization: "Internal Medicine"
   },
   {
     id: 3,
-    url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
+    url: "/assets/doctors/2.png",
     Name: "Mohammed Ali",
     Year_of_Experience: "15 Years",
     Address: "Cairo",
@@ -117,7 +117,7 @@ export const doctorlist = [
   },
   {
     id: 4,
-    url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
+    url: "/assets/doctors/3.jpg",
     Name: "Mohammed Ali",
     Year_of_Experience: "15 Years",
     Address: "Cairo",
@@ -125,7 +125,7 @@ export const doctorlist = [
   },
   {
     id: 5,
-    url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
+    url: "/assets/doctors/4.jpg",
     Name: "Mohammed Ali",
     Year_of_Experience: "15 Years",
     Address: "Cairo",
@@ -133,7 +133,7 @@ export const doctorlist = [
   },
   {
     id: 6,
-    url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
+    url: "/assets/doctors/5.jpg",
     Name: "Mohammed Ali",
     Year_of_Experience: "15 Years",
     Address: "Cairo",
@@ -141,7 +141,7 @@ export const doctorlist = [
   },
   {
     id: 7,
-    url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
+    url: "/assets/doctors/6.jpg",
     Name: "Mohammed Ali",
     Year_of_Experience: "15 Years",
     Address: "Cairo",
@@ -149,7 +149,7 @@ export const doctorlist = [
   },
   {
     id: 8,
-    url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
+    url: "/assets/doctors/7.jpg",
     Name: "Mohammed Ali",
     Year_of_Experience: "15 Years",
     Address: "Cairo",
@@ -157,7 +157,7 @@ export const doctorlist = [
   },
   {
     id: 9,
-    url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
+    url: "/assets/doctors/8.avif",
     Name: "Mohammed Ali",
     Year_of_Experience: "15 Years",
     Address: "Cairo",
@@ -165,7 +165,7 @@ export const doctorlist = [
   },
   {
     id: 10,
-    url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
+    url: "/assets/doctors/9.avif",
     Name: "Mohammed Ali",
     Year_of_Experience: "15 Years",
     Address: "Cairo",
@@ -173,7 +173,7 @@ export const doctorlist = [
   },
   {
     id: 11,
-    url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
+    url: "/assets/doctors/10.png",
     Name: "Mohammed Ali",
     Year_of_Experience: "15 Years",
     Address: "Cairo",
@@ -181,7 +181,7 @@ export const doctorlist = [
   },
   {
     id: 12,
-    url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
+    url: "/assets/doctors/11.png",
     Name: "Mohammed Ali",
     Year_of_Experience: "15 Years",
     Address: "Cairo",
@@ -189,7 +189,7 @@ export const doctorlist = [
   },
   {
     id: 13,
-    url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
+    url: "/assets/doctors/12.png",
     Name: "Mohammed Ali",
     Year_of_Experience: "15 Years",
     Address: "Cairo",
@@ -197,7 +197,7 @@ export const doctorlist = [
   },
   {
     id: 14,
-    url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
+    url: "/assets/doctors/13.png",
     Name: "Mohammed Ali",
     Year_of_Experience: "15 Years",
     Address: "Cairo",
@@ -205,7 +205,7 @@ export const doctorlist = [
   },
   {
     id: 15,
-    url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
+    url: "/assets/doctors/14.png",
     Name: "Mohammed Ali",
     Year_of_Experience: "15 Years",
     Address: "Cairo",

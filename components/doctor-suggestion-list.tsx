@@ -27,7 +27,7 @@ function DoctorSuggestionList({Suggestions}:DoctorSuggestionListProps) {
       {doctorList.map((doctor, index) => (
         <Link
           key={index}
-          href={"/details/" + doctor.id}
+          href={`${doctor.id}`}
           className=" mb-4 p-3 shadow-sm w-full 
             cursor-pointer hover:bg-slate-100
             rounded-lg flex items-center gap-3"
