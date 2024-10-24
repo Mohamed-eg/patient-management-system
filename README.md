@@ -33,4 +33,18 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details
+
+## Contributors
+
+- **Ahmed Saad**:
+[ahmed.saad.kader@gmail.com](mailto:ahmed.saad.kader@gmail.com) | [LinkedIn](https://www.linkedin.com/in/ahmed-saad-29b755269/)
+
+- **Belal El-Zaro**:
+[belalismail252@gmail.com](mailto:belalismail252@gmail.com) | [LinkedIn](https://www.linkedin.com/in/belal-ismail-564036228/)
+
+- **Mohamed ِAl-Shaib**:
+[mohammed.a.alshayb@gmail.com](mailto:mohammed.a.alshayb@gmail.com) | [LinkedIn](inkedin.com/in/mohammed-alshayb-552a50210)
+
+- **Mohamed Arafat**:
+[mohamedamr0001@gmail.com](mailto:mohamedamr0001@gmail.com) | [LinkedIn](https://www.linkedin.com/in/mo-arafat/)
