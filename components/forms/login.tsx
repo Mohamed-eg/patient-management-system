@@ -95,7 +95,7 @@ const handleServerError =()=>{
         iconAlt ='password'
         />
         <p className="text-red-700">{invalied&&`Invalied email or password`}</p>
-      <SubmitButton isLoading={false}>Get started</SubmitButton>
+      <SubmitButton isLoading={isLoading}>Get started</SubmitButton>
       <Button onClick={()=>{router.push("/")}} className="m-auto w-full font-bold">sign-up</Button>
     </form>
   </Form>
