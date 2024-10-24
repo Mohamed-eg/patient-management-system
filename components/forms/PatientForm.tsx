@@ -196,10 +196,10 @@ const PatientForm=()=> {
         iconAlt ='location'
         />
       <SubmitButton isLoading={false}>Get started</SubmitButton>
-      <div className="w-full flex">
+    </form>
+      <div className="w-full flex mt-4">
         <Button onClick={()=>{router.push("login")}} className="m-auto w-full font-bold">Login</Button>
         </div>
-    </form>
   </Form>
   )
 }

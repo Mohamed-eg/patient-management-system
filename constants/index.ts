@@ -1,6 +1,6 @@
 export const GenderOptions = ["male", "female", "other"];
 
-export const APIServerURL ='http://localhost:5000/api/v1'
+export const APIServerURL ='https://doctorvisitapp-production.up.railway.app/api/v1/docs'
 
 export const catigoryList =[
   {

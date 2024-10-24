@@ -104,7 +104,7 @@ const AboutUs = () => {
                   <Image 
                    width={1000}
                    height={1000}
-                   src={`/assets/doctors/${index}.jpg`}
+                   src={`/assets/team/${index+1}.png`}
                     alt={member.name}
                     className="w-full h-full object-cover"
                   />

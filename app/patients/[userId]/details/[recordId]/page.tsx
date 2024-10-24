@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 "use client";
 import React, { useEffect, useState } from "react";
 // import DoctorDetail from "@/components/doctor-detail";
@@ -8,7 +9,7 @@ import { APIServerURL, doctorlist } from "@/constants";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 const DoctorDetailNoSSR = dynamic(() => import("@/components/doctor-detail"), { ssr: false })
-function Details({ params }) {
+function Details({ params }: any) {
   console.log(params,`${APIServerURL}/doctors/${params.recordId}`)
   const doctor = {
     id:params.recordId,
@@ -49,6 +50,7 @@ function Details({ params }) {
     // handle error
     console.log(error);
     const doctor = doctorlist.find(doc => doc.id == params.recordId);
+    //@ts-ignore
     setMyDoctor(doctor)
   })
   },[])
@@ -64,7 +66,9 @@ function Details({ params }) {
         </div>
         {/* Doctor Suggestion  */}
         <div>
-          <DoctorSuggestionList Suggestions={doctorlist} />
+          <DoctorSuggestionList 
+          //@ts-ignore
+          Suggestions={doctorlist} />
         </div>
       </div>
           <Footer/>
