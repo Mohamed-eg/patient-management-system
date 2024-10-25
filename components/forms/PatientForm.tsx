@@ -53,15 +53,6 @@ const PatientForm=()=> {
  async function onSubmit({first_name,last_name, email, phone,password,user_type,specialization,location}: z.infer<typeof UserFormValidation>) {
    setIsLoading(true);
    try{
-    console.log({
-      email: email,
-      password:password,
-      first_name: first_name,
-      last_name: last_name,
-      user_type:user_type,
-      specialty:specialization,
-      location:location
-    })
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const data = await axios.post(`${APIServerURL}/users/register`, {
       email: email,
@@ -73,7 +64,7 @@ const PatientForm=()=> {
       location:location
     }).then(response => {
     console.log('Success:', response.data); // Handle success response
-    router.push(`/patients/${response.data.user.uid}/homePage`)
+    router.push(`/patients/${(response.data.user.uid)}/homePage`)
   })
   .catch(error => {
     console.error('Error:', error.response ? error.response.data : error.message); // Handle error response
@@ -88,7 +79,7 @@ const PatientForm=()=> {
   }
   const handleClick = (value: string) => {
     setType(value)  };
-  return(
+  return(<>
     <Form {...form}>
     <form onSubmit={form.handleSubmit(onSubmit)} className=" space-y-6 flex-1">
         <section>
@@ -172,7 +163,7 @@ const PatientForm=()=> {
           placeholder = 'Select a Specialization'
           >
             {catigoryList.map((doctor)=>(
-              <SelectItem key={doctor.name} value={doctor.name} className="w-full">
+              <SelectItem key={doctor.name} value={doctor.value} className="w-full">
                 <div className="flex cursor-pointer items-center w-full py-1">
                   <Image 
                   src={doctor.url}
@@ -195,12 +186,12 @@ const PatientForm=()=> {
         iconSrc = "/assets/icons/user.svg"
         iconAlt ='location'
         />
-      <SubmitButton isLoading={false}>Get started</SubmitButton>
+      <SubmitButton isLoading={isLoading}>Get started</SubmitButton>
     </form>
+  </Form>
       <div className="w-full flex mt-4">
         <Button onClick={()=>{router.push("login")}} className="m-auto w-full font-bold">Login</Button>
-        </div>
-  </Form>
+        </div></>
   )
 }
 

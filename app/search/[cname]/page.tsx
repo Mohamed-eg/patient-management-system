@@ -5,36 +5,23 @@ import { useParams } from "next/navigation";
 import axios from "axios";
 import { capitalizeFirstLetter } from "@/helper/capitalizeFirstLetter";
 import { doctorlist } from "@/constants";
-interface Doctor {
-  id: string;
-    url: string;
-    Name: string;
-    Year_of_Experience: string;
-    Address: string;
-    feePerCunsultation: string;
-    About: string;
-    Suggestions: never[];
-    patientId: string;
-    degrees: string;
-    specialization: string;
-}
 
 function Search({ params }: any) {
-  const [doctors, setDoctors] = useState<Doctor[]>(doctorlist);
+  const [doctors, setDoctors] = useState<any[]>(doctorlist);
   const param = useParams();
-  const specialization = param.cname;
-  const filteredDoctors = doctors.filter(doctor => doctor.specialization == specialization);
+  const specialty = param.cname;
+  const filteredDoctors = doctors.filter(doctor => doctor.specialty.toLowerCase() == specialty);
 
   useEffect(() => {
     (async function () {
       try {
         const response = await axios.get(`/api/doctors/get-a-specialist`, {
-          params: { specialization },
+          params: { specialty },
         });
         setDoctors(response.data.doctors);
       } catch (error: any) {
         console.error("Error fetching doctors data:", error);
-        console.log(doctors,specialization)
+        console.log(doctors,specialty)
         setDoctors(filteredDoctors)
       }
     })();
@@ -44,6 +31,7 @@ function Search({ params }: any) {
       <DoctorList
         heading={capitalizeFirstLetter(params.cname.replace(/%20/g, " "))}
         doctorList={filteredDoctors}
+        specialty={specialty}
       />
     </div>
   );

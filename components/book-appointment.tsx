@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { ID } from "node-appwrite"
 import {
   Dialog,
   DialogClose,
@@ -51,9 +50,9 @@ function BookAppointment({ doctor }: any) {
     const responce: any = axios.post(
       `${APIServerURL}/appointments`,
       {
-        id:ID.unique(),
+        id:Math.random(),
         patient_id: doctor.patientId,
-        doctor_id: doctor.id ,
+        doctor_id: doctor.uid ,
         schedule_id: Math.random(),
         status: "pending",
         created_at: `${date}-${selectedTimeSlot}`,
@@ -62,9 +61,9 @@ function BookAppointment({ doctor }: any) {
     );
     // Code for saving booking
     console.log(responce,{
-      id:ID.unique(),
+      id:Math.random(),
       patient_id: doctor.patientId,
-      doctor_id: doctor.id ,
+      doctor_id: doctor.uid ,
       schedule_id: Math.random(),
       status: "pending",
       created_at: `${date}-${selectedTimeSlot}`,

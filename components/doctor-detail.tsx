@@ -41,31 +41,31 @@ function DoctorDetail({ doctor }: any) {
         </div>
         {/* Doctor Info  */}
         <div className="col-span-2 mt-5 flex md:px-10 flex-col gap-3 items-baseline">
-          <h2 className="font-bold text-2xl">{doctor.Name}</h2>
+          <h2 className="font-bold text-2xl">{doctor.first_name}{doctor.last_name}</h2>
           <h2 className="flex gap-2 text-gray-500 text-md">
             <GraduationCap />
-            <span>{doctor.Year_of_Experience} years of Experince</span>
+            <span>{(doctor.Year_of_Experience)?doctor.Year_of_Experience:"5"} years of Experince</span>
           </h2>
           <h2 className="text-md flex gap-2 text-gray-500">
             <MapPin />
-            <span>{doctor.Address}</span>
+            <span>{doctor.location}</span>
           </h2>
           <h2 className="text-md flex gap-2 text-gray-500">
             <span className="font-bold " >EGP</span>
-            <span>{`${doctor.feePerCunsultation} Consultation fee at clinic`}</span>
+            <span>{`${(doctor.feePerCunsultation)?doctor.feePerCunsultation:"400"} Consultation fee at clinic`}</span>
           </h2>
           <div className="flex gap-3">
             <h2
               className="text-[10px] bg-blue-100 p-1 rounded-full
                             px-2 text-primary"
             >
-              {doctor.specialization}
+              {doctor.specialty}
             </h2>
             <h2
               className="text-[10px] bg-blue-100 p-1 rounded-full
                             px-2 text-primary"
             >
-              {doctor.degrees}
+              {(doctor.degrees)?doctor.degrees:"BHA"}
             </h2>
           </div>
 

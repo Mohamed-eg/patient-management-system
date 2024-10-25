@@ -12,15 +12,16 @@ const DoctorDetailNoSSR = dynamic(() => import("@/components/doctor-detail"), { 
 function Details({ params }: any) {
   console.log(params,`${APIServerURL}/doctors/${params.recordId}`)
   const doctor = {
-    id:params.recordId,
+    uid:params.recordId,
     patientId:params.userId,
-    url: "/beautiful-young-female-doctor-looking-camera-office.jpg",
-    Name: "Nore mahfoz",
+    url: "/assets/doctors/1.jpg",
+    last_name:"",
+    first_name: "Nore mahfoz",
     Year_of_Experience: "15",
-    Address: "Jalangi, Murshidabad, West Bengal",
+    location: "Jalangi, Murshidabad, West Bengal",
     degrees: "MBBS",
     feePerCunsultation: "700",
-    specialization: "Dermatologist",
+    specialty: "Dermatologist",
     About:
     "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, comes from a line in section 1.10.32.",
     Suggestions:doctorlist
@@ -33,15 +34,16 @@ function Details({ params }: any) {
     // handle success
     console.log(response);
     setMyDoctor({
-      id:`${params.recordId}`,
+      uid:`${params.recordId}`,
       patientId:params.userId,
-      url:"/beautiful-young-female-doctor-looking-camera-office.jpg",
-      Name: "Nore mahfoz",
+      url:"/assets/doctors/1.jpg",
+      last_name:response.data.last_name,
+      first_name: response.data.first_name,
       Year_of_Experience:"15",
-      Address:response.data.location,
+      location:response.data.location,
       degrees:"MBBS",
       feePerCunsultation:"700",
-      specialization:response.data.specialty,
+      specialty:response.data.specialty,
       About:"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, comes from a line in section 1.10.32.",
       Suggestions:doctorlist,
     })
@@ -49,7 +51,7 @@ function Details({ params }: any) {
   .catch(function (error) {
     // handle error
     console.log(error);
-    const doctor = doctorlist.find(doc => doc.id == params.recordId);
+    const doctor = doctorlist.find(doc => doc.uid == params.recordId);
     //@ts-ignore
     setMyDoctor(doctor)
   })

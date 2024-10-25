@@ -1,9 +1,11 @@
 "use client"
+import { APIServerURL } from "@/constants";
+import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-function DoctorList({ doctorList, heading = "Popular Doctors" }: any) {
+function DoctorList({specialty, doctorList, heading = "Popular Doctors" }: any) {
  /**  id: number;
   url: string;
   Name: string;
@@ -12,8 +14,22 @@ function DoctorList({ doctorList, heading = "Popular Doctors" }: any) {
   specialization: string; */ 
  // eslint-disable-next-line @typescript-eslint/no-unused-vars
  const  [myDoctors,setMyDoctors]= useState(doctorList)
-  useEffect(()=>{
-
+  useEffect(() => {
+    const fetchDoctors = async () => {
+      try {
+        const response = await axios.get(`${APIServerURL}/doctors`);
+        console.log('Success:', response.data.doctors); // Handle success response
+        setMyDoctors(response.data.doctors)
+        if(specialty){
+          const filteredDoctors = response.data.doctors.filter((doctor: { specialty: string; }) => doctor.specialty.toLowerCase() == specialty);
+          setMyDoctors(filteredDoctors)
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error); // Handle error
+      }
+    };
+  
+    fetchDoctors()
   },[])
   return (
     <div className="mb-10 px-8">
@@ -33,7 +49,7 @@ function DoctorList({ doctorList, heading = "Popular Doctors" }: any) {
                 key={index}
               >
                 <Image
-                  src={doctor?.url}
+                  src={(doctor?.url)?doctor?.url:"/assets/doctors/1.jpg"}
                   alt="doctor"
                   width={500}
                   height={200}
@@ -44,12 +60,12 @@ function DoctorList({ doctorList, heading = "Popular Doctors" }: any) {
                     className="text-[10px] bg-blue-100 p-1 rounded-full
                         px-2 text-primary"
                   >
-                    {doctor.specialization}
+                    {doctor.specialty}
                   </h2>
-                  <h2 className="font-bold">{doctor.Name}</h2>
-                  <h2 className="text-primary text-sm">{`${doctor.Year_of_Experience} Years`}</h2>
-                  <h2 className="text-gray-500 text-sm">{doctor.Address}</h2>
-                  <Link href={`details/` + doctor?.id} className="w-full">
+                  <h2 className="font-bold">{doctor.first_name} {doctor.last_name}</h2>
+                  <h2 className="text-primary text-sm">{`${(doctor.Year_of_Experience)?doctor.Year_of_Experience:"6"} Years`}</h2>
+                  <h2 className="text-gray-500 text-sm">{doctor.location}</h2>
+                  <Link href={`details/` + doctor?.uid} className="w-full">
                     <h2
                       className="p-2 px-3 border-[1px] border-primary
                         text-primary rounded-full w-full text-center
