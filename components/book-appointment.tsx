@@ -18,7 +18,13 @@ import { APIServerURL } from "@/constants";
 // import { toast } from "sonner";
 
 function BookAppointment({ doctor }: any) {
+  // const Today = new Date();
+  // const dayName = Today.toLocaleDateString('en-US', { weekday: 'long' });
   const [date, setDate] = useState(new Date());
+  const today = new Date(date);
+
+// Get the day name
+const dayName = today.toLocaleDateString('en-US', { weekday: 'long' });
   const [timeSlot, setTimeSlot] = useState<{ time: string }[]>();
   const [selectedTimeSlot, setSelectedTimeSlot] = useState();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -47,28 +53,41 @@ function BookAppointment({ doctor }: any) {
   };
 
   const saveBooking = () => {
+   try {
     const responce: any = axios.post(
-      `${APIServerURL}/appointments`,
+      `${APIServerURL}/schedules/create`,
       {
-        id:Math.random(),
-        patient_id: doctor.patientId,
         doctor_id: doctor.uid ,
-        schedule_id: Math.random(),
-        status: "pending",
-        created_at: `${date}-${selectedTimeSlot}`,
-        updated_at: `${date}-${selectedTimeSlot}`
+        day_of_week: `${dayName}`,
+        start_time: `${selectedTimeSlot}`,
+        end_time: `${selectedTimeSlot}`
       }
-    );
-    // Code for saving booking
-    console.log(responce,{
-      id:Math.random(),
+    ).then(
+     (res:any)=>{
+      console.log(res)
+      alert(`the appointment have been created at time ${res.data.start_time} on ${res.data.day_of_week}`)
+     }
+    )
+    /*/**
+          id:Math.random(),
       patient_id: doctor.patientId,
       doctor_id: doctor.uid ,
       schedule_id: Math.random(),
       status: "pending",
       created_at: `${date}-${selectedTimeSlot}`,
       updated_at: `${date}-${selectedTimeSlot}`
+    */
+    // Code for saving booking
+    console.log(responce,{
+      doctor_id: doctor.uid ,
+      day_of_week: `${dayName}`,
+      start_time: `${selectedTimeSlot}`,
+      end_time: `${selectedTimeSlot}`
     })
+   } catch (error) {
+    console.log(error)
+    alert("this time is besy")
+   }
   };
 
   const isPastDay = (day: any) => {
