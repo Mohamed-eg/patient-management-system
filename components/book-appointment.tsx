@@ -1,3 +1,4 @@
+"use client"
 import React, { useEffect, useState } from "react";
 import {
   Dialog,
@@ -18,8 +19,6 @@ import { APIServerURL } from "@/constants";
 // import { toast } from "sonner";
 
 function BookAppointment({ doctor }: any) {
-  // const Today = new Date();
-  // const dayName = Today.toLocaleDateString('en-US', { weekday: 'long' });
   const [date, setDate] = useState(new Date());
   const today = new Date(date);
 
@@ -30,10 +29,6 @@ const dayName = today.toLocaleDateString('en-US', { weekday: 'long' });
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [note, setNote] = useState("");
   console.log(selectedTimeSlot)
-  // const getCurrentDate = () => {
-  //   const currentDate = new Date();
-  //   return currentDate.toISOString().split('T')[0];
-  // };
   useEffect(() => {
     getTime();
   }, []);
@@ -90,9 +85,9 @@ const dayName = today.toLocaleDateString('en-US', { weekday: 'long' });
    }
   };
 
-  const isPastDay = (day: any) => {
-    return day <= new Date();
-  };
+  // const isPastDay = (day: any) => {
+  //   return day <= new Date();
+  // };
 
   return (
     <Dialog>
@@ -115,7 +110,7 @@ const dayName = today.toLocaleDateString('en-US', { weekday: 'long' });
                     mode="single"
                     selected={date}
                     onSelect={(day) => day && setDate(day)}
-                    disabled={isPastDay}
+                    // disabled={false}
                     className="rounded-md border"
                   />
                 </div>

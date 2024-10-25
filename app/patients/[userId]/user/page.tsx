@@ -53,40 +53,40 @@ import { APIServerURL } from "@/constants";
 export type Appointment = {
   _id: string;
   status: "Pending" | "Complete";
-  userName: string;
-  date: string;
+  day_of_week: string;
+  created_at: string;
   completed: boolean;
 };
 
 // on click status change handler
-async function statusChangeHandler(appointmentId: string) {
-  try {
-    const response = await axios.put(
-      `/api/appointments/complete/${appointmentId}`
-    );
-    // Display success message using toast notification
-    toast(response.data.message, {
-      action: {
-        label: "Undo",
-        onClick: () => console.log("Undo"),
-      },
-    });
-  } catch (err: any) {
-    // Display error message using toast notification on registration failure
-    toast(err.response.data.message, {
-      action: {
-        label: "Undo",
-        onClick: () => console.log("Undo"),
-      },
-    });
-  }
-}
+// async function statusChangeHandler({params: {userId}}:SearchParamProps) {
+//   try {
+//     const response = await axios.put(
+//       `/schedules/${userId}`
+//     );
+//     // Display success message using toast notification
+//     toast(response.data.message, {
+//       action: {
+//         label: "Undo",
+//         onClick: () => console.log("Undo"),
+//       },
+//     });
+//   } catch (err: any) {
+//     // Display error message using toast notification on registration failure
+//     toast(err.response.data.message, {
+//       action: {
+//         label: "Undo",
+//         onClick: () => console.log("Undo"),
+//       },
+//     });
+//   }
+// }
 
 // Define table columns for appointments
 const columns: ColumnDef<Appointment>[] = [
   {
     accessorKey: "completed",
-    header: "Status",
+    header: "status",
     cell: ({ row }) => (
       <div>
         <p
@@ -100,18 +100,18 @@ const columns: ColumnDef<Appointment>[] = [
     ),
   },
   {
-    accessorKey: "userName",
-    header: () => <div>Patient Name</div>,
+    accessorKey: "day_of_week",
+    header: () => <div>day</div>,
     cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("userName")}</div>
+      <div className="capitalize">{row.getValue("day_of_week")}</div>
     ),
   },
   {
-    accessorKey: "date",
+    accessorKey: "created_at",
     header: () => <div>Date</div>,
     cell: ({ row }) => {
-      // Parse the date string and format it to "MM/DD/YYYY"
-      const formattedDate = new Date(row.getValue("date")).toLocaleDateString();
+      // Parse the created_at string and format it to "MM/DD/YYYY"
+      const formattedDate = new Date(row.getValue("created_at")).toLocaleDateString();
       return <div className="font-medium">{formattedDate}</div>;
     },
   },
@@ -165,7 +165,7 @@ const columns: ColumnDef<Appointment>[] = [
               <AlertDialogCancel>Cancel</AlertDialogCancel>
               <AlertDialogAction
                 onClick={() => {
-                  statusChangeHandler(appointment._id);
+                  // statusChangeHandler(appointment._id);
                 }}
               >
                 Continue
@@ -180,7 +180,7 @@ const columns: ColumnDef<Appointment>[] = [
 
 
 // Main component for displaying bookings
-export default function TodaysAppointments({userId}: any) {
+export default function TodaysAppointments({params: {userId}}:SearchParamProps) {
   const [data, setData] = useState<Appointment[]>([]);
   const [sorting, setSorting] = useState<SortingState>([]);
 //   const [columnFilters, setColumnFilters] = useState([]);
@@ -193,8 +193,9 @@ export default function TodaysAppointments({userId}: any) {
 
   // Fetch all appointments from the API
   async function fetchAllAppointments() {
+    console.log(userId)
     try {
-      const response = await axios.get(`${APIServerURL}/appointments/doctor/${userId}`);
+      const response = await axios.get(`${APIServerURL}/schedules/${userId}`);
       console.log(response?.data)
       setData(response?.data || []);
 
@@ -260,10 +261,10 @@ export default function TodaysAppointments({userId}: any) {
             <Input
               placeholder="Filter doctor names..."
               value={
-                (table.getColumn("userName")?.getFilterValue() as string) ?? ""
+                (table.getColumn("day_of_week")?.getFilterValue() as string) ?? ""
               }
               onChange={(event) =>
-                table.getColumn("userName")?.setFilterValue(event.target.value)
+                table.getColumn("day_of_week")?.setFilterValue(event.target.value)
               }
               className="max-w-sm"
             />
