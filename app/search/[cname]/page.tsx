@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import axios from "axios";
 import { capitalizeFirstLetter } from "@/helper/capitalizeFirstLetter";
 import { doctorlist } from "@/constants";
+import Header from "@/components/header";
 
 function Search({ params }: any) {
   const [doctors, setDoctors] = useState<any[]>(doctorlist);
@@ -28,6 +29,7 @@ function Search({ params }: any) {
   }, []);
   return (
     <div className="mt-5">
+      <Header userId={params.userId}/>
       <DoctorList
         heading={capitalizeFirstLetter(params.cname.replace(/%20/g, " "))}
         doctorList={filteredDoctors}

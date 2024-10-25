@@ -4,9 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-// import { signOut } from "next-auth/react";
 import { LayoutDashboard } from "lucide-react";
-// import { useRouter } from "next/navigation"
+import axios from "axios";
+import { APIServerURL } from "@/constants";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+
 function Header({userId}:{userId:string}) {
  
 //<Button onClick={()=>{router.push("/")}} className="m-auto w-full font-bold">sign-up</Button>
@@ -15,15 +17,14 @@ function Header({userId}:{userId:string}) {
   async function onClickSignOut() {
     // router.push("/login")
     try {
-      // signOut();
-      // Show toast notification on successful logout
-     
+      axios.post(`${APIServerURL}/users/logout`)
       toast("Logout successful", {
         action: {
           label: "Undo",
           onClick: () => console.log("Undo"),
         },
       });
+      //router.push("/login")
     } catch (err) {
       console.log(err);
     }
@@ -66,6 +67,14 @@ function Header({userId}:{userId:string}) {
           </ul>
         </div>
         <div className="flex gap-1 md:gap-3">
+       <Link href={`/patients/${userId}/user`}>
+       <Avatar>
+      <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+      <AvatarFallback>MA</AvatarFallback>
+    </Avatar>
+       </Link>
+
+
           <Button asChild>
             <h2 className="text-md flex gap-2 text-gray-500">
               <LayoutDashboard />
